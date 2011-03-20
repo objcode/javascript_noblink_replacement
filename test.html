@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+<head>
+<title>inline javascript event example</title>
+<script type="text/javascript">
+</script>
+<script type="text/javascript"
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+});
+
+postdraw = function(id, fn) {
+  dom = document.getElementById(id);
+  fn(dom);
+};
+
+colorToHex = function(red, green, blue) {
+    var rgb = blue | (green << 8) | (red << 16);
+    return '#' + rgb.toString(16);
+};
+
+example_fn = function(dom) {
+  $(dom).css('color', colorToHex(Math.random() * 255, Math.random() * 255, Math.random() * 255));
+  $(dom).show()
+};
+
+</script>
+</head>
+
+<body>
+<h1 id="what" style='display: none;'>h1 goes here</h1>
+<script type="text/javascript">
+postdraw('what', example_fn);
+</script>
+
+after script
+<hr>
+
+<script type="text/javascript">
+$.ajax("http://saucelabs.com/", {async: false})
+</script>
+
+finished loading
+</body> </html>
